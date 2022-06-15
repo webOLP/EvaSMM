@@ -274,7 +274,6 @@
     color: #390038;
     border: none;
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -402,4 +401,10 @@
     right: 25px;
     width: 70px;
     height: 70px;
+}
+
+@media screen and (max-width:1800px)  {
+    .arrowUp {
+        display: none;
+    }
 }
