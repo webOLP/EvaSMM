@@ -4,11 +4,17 @@ let lastItem;
 let lastItemText;
 let counterOpenItems = 0;
 let lastItemPrice;
+let imgFullCount = 0;
 
+const imgs = document.querySelectorAll('.portfolioImgBack');
 
 
 for (let i = 0; i < servicesItems.length; i++) {
     servicesItems[i].addEventListener('click', toggleActiveItem)
+}
+
+for (let i = 0; i < imgs.length; i++) {
+    imgs[i].addEventListener('click', imgFull)
 }
 
 function toggleActiveItem(event) {
@@ -19,13 +25,11 @@ function toggleActiveItem(event) {
         lastItemText = lastItem.querySelector('.servicesItemSubtitle');
         lastItemPrice = lastItem.querySelector('.servicesItemPrice');
         counterOpenItems = 1;
-        console.log('nachalo ',lastItem, lastItemText, counterOpenItems);
     } else {
         if (lastItem === event.currentTarget) {
             lastItemText.classList.remove('active');
             lastItemPrice.classList.remove('active');
             counterOpenItems = 0;
-            console.log('odinakovie ',lastItem, lastItemText, counterOpenItems);
         } else {
             lastItemText.classList.remove('active');
             lastItemPrice.classList.remove('active');
@@ -35,8 +39,21 @@ function toggleActiveItem(event) {
             lastItemText = lastItem.querySelector('.servicesItemSubtitle');
             lastItemPrice = lastItem.querySelector('.servicesItemPrice')
             counterOpenItems = 1;
-            console.log('konec ',lastItem, lastItemText, counterOpenItems);
         }
     }
 }
 
+function imgFull(event) {
+    
+    console.log(event.target,'  ', event.currentTarget)
+    event.currentTarget.classList.toggle('activeImg');
+    event.target.style.height = '90vh';
+    if(imgFullCount == 0 ) {
+        event.target.style.height = '90vh';
+        imgFullCount = 1;
+    }
+        else {
+        event.target.style.height = '100%' 
+        imgFullCount = 0;
+        }
+}
